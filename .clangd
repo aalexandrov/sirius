@@ -25,7 +25,10 @@ CompileFlags:
 # Tweak the clangd parse settings for all files
 CompileFlags:
   Compiler: clang++
-  CompilationDatabase: ./build/release
+  # Use the Clang build: its commands match clangd's parser and retain debug
+  # information for editor navigation. CMake exports this database via the
+  # clang-relwithdebinfo preset.
+  CompilationDatabase: ./build/clang-relwithdebinfo
   Add:
     # report all errors
     - "-ferror-limit=0"

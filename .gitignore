@@ -74,3 +74,8 @@ test/tpch_performance/log/
 
 PR_digests/
 plans/
+
+# Temp
+sirius-partner-kit
+test/tpch_performance/test_datasets/
+test/tpch_performance/test_datasets_persistent/
