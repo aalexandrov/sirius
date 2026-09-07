@@ -41,7 +41,7 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-SIRIUS_DUCKDB="$PROJECT_DIR/build/release/duckdb"
+SIRIUS_DUCKDB="${SIRIUS_BIN:-$PROJECT_DIR/build/release/duckdb}"
 
 DUCKDB_FILE=""
 NUM_ITERATIONS=2
@@ -114,7 +114,7 @@ if [ "$ENGINE" != "sirius" ] && [ "$ENGINE" != "duckdb" ]; then
     echo "Unknown engine, please use sirius or duckdb"
     exit 1
 fi
-DUCKDB="$SIRIUS_DUCKDB"
+DUCKDB="${DUCKDB_BIN:-$SIRIUS_DUCKDB}"
 QUERY_DIR="$PROJECT_DIR/test/tpch_performance/tpch_queries/orig"
 if [ "$ENGINE" != "sirius" ]; then
     export SIRIUS_DISABLE=1

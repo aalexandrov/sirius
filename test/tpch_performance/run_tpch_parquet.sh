@@ -41,7 +41,7 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-SIRIUS_DUCKDB="$PROJECT_DIR/build/release/duckdb"
+SIRIUS_DUCKDB="${SIRIUS_BIN:-$PROJECT_DIR/build/release/duckdb}"
 
 PARQUET_DIR=""
 NUM_ITERATIONS=2
@@ -135,7 +135,7 @@ if [ "$PINNING_MODE" = "pinned-hot" ] && [ "$MULTI_SESSION" = true ] && [ "$ENGI
     exit 1
 fi
 
-DUCKDB="$SIRIUS_DUCKDB"
+DUCKDB="${DUCKDB_BIN:-$SIRIUS_DUCKDB}"
 # Both engines use the same plain SQL queries — transparent execution
 # routes queries through GPU when SiriusContext is initialized.
 QUERY_DIR="$PROJECT_DIR/test/tpch_performance/tpch_queries/orig"
